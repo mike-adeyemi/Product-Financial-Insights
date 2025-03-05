@@ -1,5 +1,27 @@
 # Product-Financial-Insights
 
+
+
+# Table of contents
+- [Project Overview](#project-overview)
+- [Data Source](#data-source)
+- [Stages](#stages)
+- [Design](#design)
+  - [Mockup](#dashboard-mockup)
+  - [Tools](#tools)
+- [Development](#development)
+  - [Pseudocode](#pseudocode)
+  - [Data Exploration](#data-exploration-notes)
+  - [Data Cleaning](#data-cleaning)
+- [Testing](#testing)
+- [Visualization](#visualization)
+  - [Results](#results)
+  - [DAX Measures](#dax-measures)
+- [Analysis](#analysis)
+- [Recommendation](#recommendation)
+
+
+
 ### Project Goals
 - Analyze sales data to uncover key business insights
 - Develop a Power Bi dashboard with interative visualization.
@@ -36,6 +58,7 @@ The data is sourced from an Excel extract, sales data to uncover key business in
 - Analysis
 
 
+# Design
 
 ### Mockup
 
@@ -47,7 +70,14 @@ The data is sourced from an Excel extract, sales data to uncover key business in
 5. Line charts category trends
 6. Funnel for quater comparison
 7. Donut Chart for monthly insights
+# Tools
 
+|Tool|	Purpose|
+|-|-|
+|Excel|	Exploring the data|
+|Power BI	|Visualizing the data via interactive dashboards|
+|GitHub|	Hosting the project documentation and version control|
+|Mokkup AI	|Designing the wireframe/mockup of the dashboard|
 
 # Development
 
@@ -81,7 +111,8 @@ The cleaned dataset should meet these conditions:
 - Appropriate data types assigned to each column.
 
 
-Clean Data Schema
+# Testing
+Row and Column Count Validation
 
 |Property|	Description|
 |-|-|
@@ -185,6 +216,7 @@ AVERAGE(Data[ Sales])
 
 📊 Dashboard Analysis
 
+# Analysis
 
 ### Key Performance Indicators (KPIs)
 |Metric|Value|Description|
@@ -240,8 +272,8 @@ AVERAGE(Data[ Sales])
 
 # 🔍Business Insights & Recommendations
 
-✅ India & UK have the highest sales → Focus marketing campaigns in these regions.
-✅ Q4 shows peak sales → Plan inventory and promotions ahead of the holiday season.
-✅ High COGS for Vermont → Re-evaluate pricing and supplier costs to improve margins.
-✅ Discount Impact at $9M → Assess if discounts are driving sales or reducing profitability.
+- ✅ India & UK have the highest sales → Focus marketing campaigns in these regions.
+- ✅ Q4 shows peak sales → Plan inventory and promotions ahead of the holiday season.
+- ✅ High COGS for Vermont → Re-evaluate pricing and supplier costs to improve margins.
+- ✅ Discount Impact at $9M → Assess if discounts are driving sales or reducing profitability.
 
