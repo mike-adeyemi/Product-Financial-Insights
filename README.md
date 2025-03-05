@@ -15,7 +15,7 @@
   - [Data Cleaning](#data-cleaning)
 - [Testing](#testing)
 - [Visualization](#visualization)
-  - [Results](#power-bi-visuals-used)
+  - [Visuals](#power-bi-visuals-used)
   - [DAX Measures](#dax-measures)
 - [Analysis](#analysis)
   - [Key Performance Indicators (KPIs)](#key-performance-indicators-(kpis))
