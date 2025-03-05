@@ -74,6 +74,10 @@ The data is sourced from an Excel extract, sales data to uncover key business in
 5. Line charts category trends
 6. Funnel for quater comparison
 7. Donut Chart for monthly insights
+![Detailed-view_mockup](https://github.com/user-attachments/assets/5feed18a-bef3-44b8-84c4-67c50f3f2117)
+![dashboard_mockup](https://github.com/user-attachments/assets/1523695e-e032-40af-979d-f07860b33dee)
+
+
 # Tools
 
 |Tool|	Purpose|
@@ -134,6 +138,10 @@ Row and Column Count Validation
 - **Treemap:** Sales by product category.
 - **Matrix Table:** Profit margins by product.
 
+![Dashboard](https://github.com/user-attachments/assets/422f7a17-dde4-4856-a6ec-01d583b795bb)
+
+### Detailed-view
+![Detailed-view](https://github.com/user-attachments/assets/85227a54-3d63-42d5-baa8-9d9dc0e92001)
 
 ## 🖥DAX Measures
 
