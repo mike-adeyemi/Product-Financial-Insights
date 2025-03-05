@@ -22,7 +22,7 @@
   - [Sales Breakdown by Year & Quarter](#sales-breakdown-by-year-&-quarter)
   - [Sales by Country](#sales-by-country)
   - [Sales by Product & COGS Analysis](#sales-by-product-&-cogs-analysis)
-- [Recommendation](#business-insights-&-recommendations)
+- [Recommendation](#business-insights-recommendations)
 
 
 
