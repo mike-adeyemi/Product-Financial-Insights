@@ -19,7 +19,7 @@
   - [DAX Measures](#dax-measures)
 - [Analysis](#analysis)
   - [Key Performance Indicators (KPIs)](#key-performance-indicators-kpis)
-  - [Sales Breakdown by Year & Quarter](#sales-breakdown-by-year-and-quarter)
+  - [Sales Breakdown by Year and Quarter](#sales-breakdown-by-year-and-quarter)
   - [Sales by Country](#sales-by-country)
   - [Sales by Product and COGS Analysis](#sales-by-product-and-cogs-analysis)
 - [Recommendation](#business-insights-and-recommendations)
