@@ -135,7 +135,7 @@ Row and Column Count Validation
 - **Matrix Table:** Profit margins by product.
 
 
-## 🖥 DAX Measures Used
+## 🖥 DAX Measures
 
 📍 Total Sales
 ```sql
