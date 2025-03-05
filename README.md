@@ -18,11 +18,11 @@
   - [Visuals](#power-bi-visuals-used)
   - [DAX Measures](#dax-measures)
 - [Analysis](#analysis)
-  - [Key Performance Indicators (KPIs)](#key-performance-indicators-(kpis))
-  - [Sales Breakdown by Year & Quarter](#sales-breakdown-by-year-&-quarter)
+  - [Key Performance Indicators (KPIs)](#key-performance-indicators-kpis)
+  - [Sales Breakdown by Year & Quarter](#sales-breakdown-by-year-and-quarter)
   - [Sales by Country](#sales-by-country)
-  - [Sales by Product & COGS Analysis](#sales-by-product-&-cogs-analysis)
-- [Recommendation](#business-insights-recommendations)
+  - [Sales by Product and COGS Analysis](#sales-by-product-and-cogs-analysis)
+- [Recommendation](#business-insights-and-recommendations)
 
 
 
@@ -230,7 +230,7 @@ AVERAGE(Data[ Sales])
 |Discount Impact|$9M|Amount of discount applied|
 |Average Sales|$270K|Average revenue per sale|
 
-## Sales Breakdown by Year & Quarter
+## Sales Breakdown by Year and Quarter
 
 - **Sales Trends:** The dashboard compares sales between **2018** and **2019,** showing a growth pattern.
 
@@ -256,7 +256,7 @@ AVERAGE(Data[ Sales])
 
 
 
-## Sales by Product & COGS Analysis
+## Sales by Product and COGS Analysis
 
 - Top-Selling Products:
 
@@ -274,7 +274,7 @@ AVERAGE(Data[ Sales])
 
 
 
-## 🔍Business Insights & Recommendations
+## 🔍Business Insights and Recommendations
 
 - ✅ **India & UK have the highest sales** → Focus marketing campaigns in these regions.
 - ✅ **Q4 shows peak sales** → Plan inventory and promotions ahead of the holiday season.
