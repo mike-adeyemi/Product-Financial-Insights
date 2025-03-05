@@ -18,7 +18,11 @@
   - [Results](#results)
   - [DAX Measures](#dax-measures)
 - [Analysis](#analysis)
-- [Recommendation](#recommendation)
+  - [Key Performance Indicators (KPIs)](#key-performance-indicators-(kpis))
+  - [Sales Breakdown by Year & Quarter](#sales-breakdown-by-year-&-quarter)
+  - [Sales by Country](#sales-by-country)
+  - [Sales by Product & COGS Analysis](#sales-by-product-&-cogs-analysis)
+- [Recommendation](#business-insights-&-recommendations)
 
 
 
@@ -41,10 +45,10 @@
 This project provides a comprehensive sales performance analysis using Power BI. The interactive dashboard helps business stakeholders understand total sales, profit, discount impact, and sales distribution by country, product, and time period.
 
 📊 Key Features
-✔ Sales, Profit, and Performance Analysis
-✔ Dynamic Power BI Dashboard
-✔ Custom DAX Measures for Advanced Analytics
-✔ Interactive Visualizations
+- ✔ Sales, Profit, and Performance Analysis
+- ✔ Dynamic Power BI Dashboard
+- ✔ Custom DAX Measures for Advanced Analytics
+- ✔ Interactive Visualizations
 
 
 ## Data Source
@@ -131,7 +135,7 @@ Row and Column Count Validation
 - **Matrix Table:** Profit margins by product.
 
 
-# 🖥 DAX Measures Used
+## 🖥 DAX Measures Used
 
 📍 Total Sales
 ```sql
@@ -161,12 +165,12 @@ Monthly Sales = SUMX(VALUES('Data'[Month]), SUM('Data'[Sales]))
 SUM(Data[Gross Sales])
 ```
 
-Profit to COGS Ratio
+📍Profit to COGS Ratio
 ```sql
 DIVIDE(SUM(Data[Profit]), SUM(Data[COGS]), 0)
 ```
 
-Running Total Sales
+📍Running Total Sales
 ```sql
 CALCULATE(
     SUM(Data[ Sales]),
@@ -177,7 +181,7 @@ CALCULATE(
 )
 ```
 
-Max Sales Previous Year
+📍Max Sales Previous Year
 ```sql
  CALCULATE(
     MAX(Data[ Sales]),
@@ -186,7 +190,7 @@ Max Sales Previous Year
 ```
 
 
-Max Sales Current Year = 
+📍Max Sales Current Year = 
 ```sql
 CALCULATE(
     MAX(Data[ Sales]),
@@ -194,13 +198,13 @@ CALCULATE(
 )
 ```
 
-Gross Sales per Unit = 
+📍Gross Sales per Unit = 
 ```sql
 DIVIDE(SUM(Data[Gross Sales]), SUM(Data[Units Sold]), 0)
 ```
 
 
-Avg Sales per Month
+📍Avg Sales per Month
 ```sql
 AVERAGEX(
     VALUES(Data[Month Name]),
@@ -208,7 +212,7 @@ AVERAGEX(
 )
 ```
 
-Avg Sales 
+📍Avg Sales 
 ```sql
 AVERAGE(Data[ Sales])
 ```
@@ -218,7 +222,7 @@ AVERAGE(Data[ Sales])
 
 # Analysis
 
-### Key Performance Indicators (KPIs)
+## Key Performance Indicators (KPIs)
 |Metric|Value|Description|
 |-|-|-|
 |Total Sales|$189.3M|Overall revenue generated|
@@ -226,7 +230,7 @@ AVERAGE(Data[ Sales])
 |Discount Impact|$9M|Amount of discount applied|
 |Average Sales|$270K|Average revenue per sale|
 
-### Sales Breakdown by Year & Quarter
+## Sales Breakdown by Year & Quarter
 
 - **Sales Trends:** The dashboard compares sales between **2018** and **2019,** showing a growth pattern.
 
@@ -240,7 +244,7 @@ AVERAGE(Data[ Sales])
 **Insight: Q4 shows the highest sales, possibly due to seasonal factors like holiday shopping.**
 
 
-# Sales by Country
+## Sales by Country
 |County|Sales($M)|
 |-|-|
 |Indian|40.81M|
@@ -252,7 +256,7 @@ AVERAGE(Data[ Sales])
 
 
 
-# Sales by Product & COGS Analysis
+## Sales by Product & COGS Analysis
 
 - Top-Selling Products:
 
@@ -270,10 +274,10 @@ AVERAGE(Data[ Sales])
 
 
 
-# 🔍Business Insights & Recommendations
+## 🔍Business Insights & Recommendations
 
-- ✅ India & UK have the highest sales → Focus marketing campaigns in these regions.
-- ✅ Q4 shows peak sales → Plan inventory and promotions ahead of the holiday season.
-- ✅ High COGS for Vermont → Re-evaluate pricing and supplier costs to improve margins.
-- ✅ Discount Impact at $9M → Assess if discounts are driving sales or reducing profitability.
+- ✅ **India & UK have the highest sales** → Focus marketing campaigns in these regions.
+- ✅ **Q4 shows peak sales** → Plan inventory and promotions ahead of the holiday season.
+- ✅ **High COGS for Vermont** → Re-evaluate pricing and supplier costs to improve margins.
+- ✅ **Discount Impact at $9M** → Assess if discounts are driving sales or reducing profitability.
 
