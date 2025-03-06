@@ -1,7 +1,6 @@
 # Product-Financial-Insights
 
 
-
 ### Table of contents
 - [Project Overview](#project-overview)
 - [Data Source](#data-source)
