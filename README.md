@@ -138,31 +138,32 @@ The cleaned dataset should meet these conditions:
 -- 1. Remove duplicate rows in the table
 
 	WITH CTE AS (
-			SELECT *,
-			ROW_NUMBER() 
-			OVER (PARTITION BY [Country]
-			,[Product]
-			,[Units_Sold]
-			,[Manufacturing_Price]
-			,[Sale_Price]
-			,[Gross_Sales]
-			,[Discounts]
-			,[Sales]
-			,[COGS]
-			,[Profit]
-			,[Date]
-			,[Month_Name]
-			,[Year]
-			,[column14] ORDER BY (SELECT NULL)) AS rn
-			FROM sales_data
-							)
-			DELETE FROM CTE WHERE rn > 1;
+		SELECT *,
+	ROW_NUMBER()
+	OVER (PARTITION BY [Country]
+	,[Product]
+		,[Units_Sold]
+	,[Manufacturing_Price]
+		,[Sale_Price]
+	,[Gross_Sales]
+		,[Discounts]
+	,[Sales]
+		,[COGS]
+	,[Profit]
+		,[Date]
+	,[Month_Name]
+		,[Year]
+	,[column14] ORDER BY (SELECT NULL)) AS rn
+		FROM sales_data	)
+	DELETE FROM CTE WHERE rn > 1;
 
-SELECT * FROM sales_data;
+	SELECT
+	*
+	FROM sales_data;
 
---2.	 LOCATE NULLS FROM THE TABLE
+--2.  LOCATE NULLS FROM THE TABLE
 
-		SELECT * 
+	SELECT * 
 		FROM sales_data
 		WHERE Country IS NULL 
 		AND Product IS NULL 
