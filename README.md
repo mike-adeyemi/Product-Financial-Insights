@@ -396,30 +396,25 @@ The cleaned dataset should meet these conditions:
 ### SQL query
 ```sql
 /*
-
 4. Duplicate counts
-
 */
+--4.	Duplicate records count 		
+	SELECT *, COUNT(*) AS duplicate_count
+	FROM sales_data
+	GROUP BY Country, Product, Units_Sold, Manufacturing_Price, Sale_Price, Gross_Sales, Discounts, Sales, COGS, 
+	Profit, Month_Name, Date, Year
+	HAVING COUNT(*) > 1;
 
+	```
 
---4.	Duplicate records count 
-		
-		SELECT *, COUNT(*) AS duplicate_count
-		FROM sales_data
-		GROUP BY Country, Product, Units_Sold, Manufacturing_Price, Sale_Price, Gross_Sales, Discounts, Sales, COGS, 
-         Profit, Month_Name, Date, Year
-		HAVING COUNT(*) > 1;
-
-```
 ### Output
 
 ![4  Duplicate_records_count](https://github.com/user-attachments/assets/d88894c0-c5ea-4c88-9171-353437e58f48)
 
 
-
 |Property|	Description|
 |-|-|
-|Number of Rows|	702|
+|Number of Rows|	700|
 |Number of Columns	|13|
 
 
