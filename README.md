@@ -165,160 +165,157 @@ The cleaned dataset should meet these conditions:
 
 	SELECT * 
 		FROM sales_data
-		WHERE Country IS NULL 
+	WHERE Country IS NULL 
 		AND Product IS NULL 
-		AND Units_Sold IS NULL 
+	AND Units_Sold IS NULL 
 		AND Manufacturing_Price IS NULL 
-		AND Sale_Price IS NULL 
+	AND Sale_Price IS NULL 
 		AND Gross_Sales IS NULL 
-		AND Discounts IS NULL 
+	AND Discounts IS NULL 
 		AND Sales IS NULL 
-		AND COGS IS NULL 
+	AND COGS IS NULL 
 		AND Profit IS NULL 
-		AND Date IS NULL 
+	AND Date IS NULL 
 		AND Month_Name IS NULL 
-		AND Year IS NULL 
+	AND Year IS NULL 
 		AND column14 IS NULL;
 
 
 
---		DELETE NULLS FROM THE TABLE
+--	DELETE NULLS FROM THE TABLE
 
-		DELETE FROM sales_data
+	DELETE FROM sales_data
 		WHERE Country IS NULL 
-		AND Product IS NULL 
+	AND Product IS NULL 
 		AND Units_Sold IS NULL 
-		AND Manufacturing_Price IS NULL 
+	AND Manufacturing_Price IS NULL 
 		AND Sale_Price IS NULL 
-		AND Gross_Sales IS NULL 
-		AND Discounts IS NULL 
-		AND Sales IS NULL 
+	AND Gross_Sales IS NULL 
+		AND Discounts IS NULL
+	AND Sales IS NULL 
 		AND COGS IS NULL 
-		AND Profit IS NULL 
+	AND Profit IS NULL 
 		AND Date IS NULL 
-		AND Month_Name IS NULL 
+	AND Month_Name IS NULL 
 		AND Year IS NULL 
-		AND column14 IS NULL;
-
+	AND column14 IS NULL;
 
 -- 3.	DROP THE UNNECCESSARY COLUMN 
 
-
-		ALTER TABLE sales_data  
+	ALTER TABLE sales_data  
 		DROP 
-		COLUMN column14;
-
+	COLUMN column14;
 
 -- 4.	SELECT ALL THE ABBREVIATIONS
 
-		SELECT * FROM sales_data 
+	SELECT * FROM sales_data 
 		WHERE CONCAT_WS(' ', Country, Product, Units_Sold, Manufacturing_Price, Sale_Price, Gross_Sales, 
          Discounts, Sales, COGS, Profit, Date, Month_Name, 
-                      Year) LIKE '%UK%';
+		Year) LIKE '%UK%';
 
---		REPLACE ALL THE ABBREVIATIONS
+--	REPLACE ALL THE ABBREVIATIONS
 
-		UPDATE sales_data
-			SET Country = 
-		REPLACE(Country, 'UK', 'United Kingdom'),
+	UPDATE sales_data
+		SET Country = 
+	REPLACE(Country, 'UK', 'United Kingdom'),
 		Product = REPLACE(Product, 'UK', 'United Kingdom'),
-		Units_Sold = REPLACE(Units_Sold, 'UK', 'United Kingdom'),
+	Units_Sold = REPLACE(Units_Sold, 'UK', 'United Kingdom'),
 		Manufacturing_Price = REPLACE(Manufacturing_Price, 'UK', 'United Kingdom'),
-		Sale_Price = REPLACE(Sale_Price, 'UK', 'United Kingdom'),
+	Sale_Price = REPLACE(Sale_Price, 'UK', 'United Kingdom'),
 		Gross_Sales = REPLACE(Gross_Sales, 'UK', 'United Kingdom'),
-		Discounts = REPLACE(Discounts, 'UK', 'United Kingdom'),
+	Discounts = REPLACE(Discounts, 'UK', 'United Kingdom'),
 	    Sales = REPLACE(Sales, 'UK', 'United Kingdom'),
-		COGS = REPLACE(COGS, 'UK', 'United Kingdom'),
+	COGS = REPLACE(COGS, 'UK', 'United Kingdom'),
 		Profit = REPLACE(Profit, 'UK', 'United Kingdom'),
-		Date = REPLACE(Date, 'UK', 'United Kingdom'),
+	Date = REPLACE(Date, 'UK', 'United Kingdom'),
 		Year = REPLACE(Year, 'UK', 'United Kingdom');
 
 
 -- 5.	TRIM ALL THE COLUMNS IN THE TABLE 
 
-		DECLARE @sql NVARCHAR(MAX) = '';
+	DECLARE @sql NVARCHAR(MAX) = '';
 
-		SELECT @sql = @sql + 
+	SELECT @sql = @sql + 
 		'UPDATE sales_data SET ' + 
-		STRING_AGG(CONCAT(name, ' = 
+	STRING_AGG(CONCAT(name, ' = 
 		LTRIM(RTRIM(', name, '))'), ', ') + ';'
-		FROM sys.columns
+	FROM sys.columns
 		WHERE object_id = OBJECT_ID('sales_data') 
-		AND system_type_id IN (167, 231, 175); -- Only text-based columns (VARCHAR, NVARCHAR, CHAR)
+	AND system_type_id IN (167, 231, 175); -- Only text-based columns (VARCHAR, NVARCHAR, CHAR)
 
-		EXEC sp_executesql @sql;
+	EXEC sp_executesql @sql;
 
 
 -- 6.	NORMALIZE DATA
 
-		UPDATE sales_data
+	UPDATE sales_data
 		SET Product = UPPER(LEFT(Product, 1)) + 
-		LOWER(SUBSTRING(Product, 2, LEN(Product)));
+	LOWER(SUBSTRING(Product, 2, LEN(Product)));
 
 
 
---		TO CHECK THE DATA TYPE OF DATE FORMAT
+--	TO CHECK THE DATA TYPE OF DATE FORMAT
 
-		SELECT COLUMN_NAME, DATA_TYPE 
-		FROM INFORMATION_SCHEMA.COLUMNS 
-		WHERE TABLE_NAME = 'sales_data' AND 
+	SELECT COLUMN_NAME, DATA_TYPE 
+	FROM INFORMATION_SCHEMA.COLUMNS 
+	WHERE TABLE_NAME = 'sales_data' AND 
 		COLUMN_NAME = 'Date';
 
 
---		CONVERT INTEGER TO DATE IN A QUERY (WITHOUT CHANGING COLUMN TYPE)
+--	CONVERT INTEGER TO DATE IN A QUERY (WITHOUT CHANGING COLUMN TYPE)
 
 
-		SELECT Date, DATEADD(DAY, Date - 2, '1900-01-01') 
-		AS Converted_Date
-		FROM sales_data;
+	SELECT Date, DATEADD(DAY, Date - 2, '1900-01-01') 
+	AS Converted_Date
+	FROM sales_data;
 
 
---		Add A NEW DATE COLUMN 
+--	Add A NEW DATE COLUMN 
 
-		ALTER TABLE sales_data 
-		ADD Date_Converted DATE;
+	ALTER TABLE sales_data 
+	ADD Date_Converted DATE;
 		
 
---		CONVERT AND POPULATE THE NEW COLUMN
+--	CONVERT AND POPULATE THE NEW COLUMN
 		
-		UPDATE sales_data
-		SET Date_Converted = 
-		DATEADD(DAY, Date - 2, '1900-01-01');
+	UPDATE sales_data
+	SET Date_Converted = 
+	DATEADD(DAY, Date - 2, '1900-01-01');
 
 
---		REMOVE THE OLD COLUMN AND RENAME THE NEW ONE 
+--	REMOVE THE OLD COLUMN AND RENAME THE NEW ONE 
 
-		ALTER TABLE sales_data 
-		DROP COLUMN Date;
-		EXEC sp_rename 'sales_data.Date_Converted', 'Date', 'COLUMN';
+	ALTER TABLE sales_data 
+	DROP COLUMN Date;
+	EXEC sp_rename 'sales_data.Date_Converted', 'Date', 'COLUMN';
 
 
 -- 10.	REPLACE ALL NULL VALUE IN A DISCOUNT WITH O
 
-		UPDATE sales_data
-		SET Discounts = 0
-		WHERE Discounts IS NULL;
+	UPDATE sales_data
+	SET Discounts = 0
+	WHERE Discounts IS NULL;
 
 
-		SELECT * FROM sales_data
+	SELECT * FROM sales_data
 
 
---		TO REARRANGE sale_data tables (Date before Year)
+--	TO REARRANGE sale_data tables (Date before Year)
 
-		SELECT Country, Product, Units_Sold, Manufacturing_Price, Sale_Price, Gross_Sales, Discounts, Sales, COGS, Profit, Month_Name, Date, Year -- Arrange as needed
-		INTO sales_data_new
-		FROM sales_data;
-
-
---		Drop Old Sales_data table
-		DROP TABLE sales_data;
-
---		Rename the New Table
-
-		EXEC sp_rename 'sales_data_new', 'sales_data';
+	SELECT Country, Product, Units_Sold, Manufacturing_Price, Sale_Price, Gross_Sales, Discounts, Sales, COGS, Profit, Month_Name, Date, Year -- Arrange as needed
+	INTO sales_data_new
+	FROM sales_data;
 
 
-Select * from sales_data;
+--	Drop Old Sales_data table
+	DROP TABLE sales_data;
+
+--	Rename the New Table
+
+	EXEC sp_rename 'sales_data_new', 'sales_data';
+
+
+	Select * from sales_data;
 
 ```
 
