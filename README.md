@@ -394,6 +394,7 @@ The cleaned dataset should meet these conditions:
 ## Duplicate count check
 
 ### SQL query
+
 ```sql
 /*
 4. Duplicate counts
@@ -405,11 +406,12 @@ The cleaned dataset should meet these conditions:
 	Profit, Month_Name, Date, Year
 	HAVING COUNT(*) > 1;
 
-	```
+```
 
 ### Output
 
 ![4  Duplicate_records_count](https://github.com/user-attachments/assets/d88894c0-c5ea-4c88-9171-353437e58f48)
+
 
 
 |Property|	Description|
